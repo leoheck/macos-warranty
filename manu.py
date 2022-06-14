@@ -69,8 +69,8 @@ else:
     ]
 
 if len(serial) == 10: # New MacBooks M1
-    year_pos=2
-    week_pos=3
+    year_pos=5
+    week_pos=6
 else:
     year_pos=3
     week_pos=4
