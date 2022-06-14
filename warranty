@@ -103,7 +103,11 @@ def main():
     elif args.serials:
         serials = args.serials
     else:
-        serials.append(get_serial())
+        try:
+            serials.append(get_serial())
+        except:
+            printf("Could not get any serial number")
+            exit(1)
 
     if not serials:
         print("Error: Invalid or no serial number detected.")
