@@ -68,8 +68,15 @@ else:
         "IOPlatformSerialNumber"
     ]
 
-manu_year = manu_years[serial[3]][0]
-manu_week = manu_weeks[serial[4]] + manu_years[serial[3]][1]
+if len(serial) == 10: # New MacBooks M1
+    year_pos=2
+    week_pos=3
+else:
+    year_pos=3
+    week_pos=4
+
+manu_year = manu_years[serial[year_pos]][0]
+manu_week = manu_weeks[serial[week_pos]] + manu_years[serial[year_pos]][1]
 year_time = datetime.date(year=int(manu_year), month=1, day=1)
 week_diff = datetime.timedelta(weeks=manu_week)
 manu_date = year_time + week_diff
