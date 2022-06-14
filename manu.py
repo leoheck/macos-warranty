@@ -80,8 +80,8 @@ try:
     manu_week = manu_weeks[serial[week_pos]] + manu_years[serial[year_pos]][1]
 except:
     # Somethimes 10 characted serial number does not work!
-    year_pos=3
-    week_pos=4
+    year_pos=5
+    week_pos=6
     manu_year = manu_years[serial[year_pos]][0]
     manu_week = manu_weeks[serial[week_pos]] + manu_years[serial[year_pos]][1]
 
