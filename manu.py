@@ -75,8 +75,16 @@ else:
     year_pos=3
     week_pos=4
 
-manu_year = manu_years[serial[year_pos]][0]
-manu_week = manu_weeks[serial[week_pos]] + manu_years[serial[year_pos]][1]
+try:
+    manu_year = manu_years[serial[year_pos]][0]
+    manu_week = manu_weeks[serial[week_pos]] + manu_years[serial[year_pos]][1]
+except:
+    # Somethimes 10 characted serial number does not work!
+    year_pos=3
+    week_pos=4
+    manu_year = manu_years[serial[year_pos]][0]
+    manu_week = manu_weeks[serial[week_pos]] + manu_years[serial[year_pos]][1]
+
 year_time = datetime.date(year=int(manu_year), month=1, day=1)
 week_diff = datetime.timedelta(weeks=manu_week)
 manu_date = year_time + week_diff
