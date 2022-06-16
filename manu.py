@@ -33,6 +33,7 @@ manu_weeks = {
     "W": 25,
     "X": 26,
     "Y": 27,
+    "Z": 28,
 }
 
 manu_years = {
@@ -68,26 +69,20 @@ else:
         "IOPlatformSerialNumber"
     ]
 
-if len(serial) == 10: # New MacBooks M1
-    year_pos=2
-    week_pos=3
-else:
-    year_pos=3
-    week_pos=4
+if len(serial) == 10:
+    serial_id=3
+elif len(serial) == 11:
+    serial_id=3
+elif len(serial) == 12:
+    serial_id=4
 
 try:
     manu_year = manu_years[serial[year_pos]][0]
     manu_week = manu_years[serial[year_pos]][1] + manu_weeks[serial[week_pos]]
+    year_time = datetime.date(year=int(manu_year), month=1, day=1)
+    week_diff = datetime.timedelta(weeks=manu_week)
+    manu_date = year_time + week_diff
+    print(serial)
+    print(manu_date)
 except:
-    # Sometimes the 10 char code does not work
-    year_pos=3
-    week_pos=4
-    manu_year = manu_years[serial[year_pos]][0]
-    manu_week = manu_years[serial[year_pos]][1] + manu_weeks[serial[week_pos]]
-
-year_time = datetime.date(year=int(manu_year), month=1, day=1)
-week_diff = datetime.timedelta(weeks=manu_week)
-manu_date = year_time + week_diff
-
-print(serial)
-print(manu_date)
+    pass
